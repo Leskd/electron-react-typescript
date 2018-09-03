@@ -1,5 +1,8 @@
-import { app } from 'electron';
+import { app, Menu } from 'electron';
+import path from 'path';
 import MainWindow from './windows/mainWindow';
+import { mainMenu } from './menu';
+import TrayCreator from './tray';
 
 const isDevMode = process.env.NODE_ENV === 'development';
 
@@ -13,7 +16,10 @@ class Electron {
 	initApp() {
 		app.on('ready', async () => {
 			this.createMainWindow();
-			this.mainWindowInstance.loadURL('http://localhost:3000/');
+      this.mainWindowInstance.loadURL('http://localhost:3000/');
+      Menu.setApplicationMenu(mainMenu);
+      const appIconPath = path.join(__dirname, '../../assest/electron.png');
+      const tray = new TrayCreator(appIconPath);
 			if (isDevMode) {
 				this.mainWindowInstance.openDevTools();
 				await this.installExtensions();
