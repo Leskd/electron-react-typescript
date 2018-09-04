@@ -279,4 +279,5 @@ module.exports = {
   performance: {
     hints: false,
   },
+  target: 'electron-renderer'
 };

@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import counter from './counter';
 
 const rootReducers = combineReducers({
-	counter
+  counter
 });
 
 export default rootReducers;

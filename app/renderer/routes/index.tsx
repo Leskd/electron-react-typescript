@@ -5,13 +5,13 @@ import Counter from '../containers/counter';
 import NavBar from '../components/NavBar';
 
 export default function Routes() {
-	return (
-		<Fragment>
-			<NavBar />
-			<Switch>
-				<Route path="/counter" component={Counter}></Route>
-				<Route path="/" component={Home}></Route>
-			</Switch>
-		</Fragment>
-	);
+  return (
+    <Fragment>
+      <NavBar />
+      <Switch>
+        <Route path="/counter" component={Counter}></Route>
+        <Route path="/" component={Home}></Route>
+      </Switch>
+    </Fragment>
+  );
 }

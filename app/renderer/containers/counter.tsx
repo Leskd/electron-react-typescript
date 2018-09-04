@@ -5,13 +5,13 @@ import Counter from '../components/Counter';
 import { counterActions, increment, decrement } from '../actions/counter';
 
 function mapStateToProps(state: StoreState) {
-	return {
-		count: state.counter.count
-	};
+  return {
+    count: state.counter.count
+  };
 }
 
 function mapDispatchToProps(dispatch: Dispatch<counterActions>) {
-	return bindActionCreators({increment, decrement}, dispatch);
+  return bindActionCreators({increment, decrement}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);

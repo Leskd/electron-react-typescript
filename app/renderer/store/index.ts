@@ -13,13 +13,13 @@ const router = routerMiddleware(history);
 let middleArgs = [];
 
 if (isDev) {
-	middleArgs = [ thunk, router, logger ];
+  middleArgs = [ thunk, router, logger ];
 } else {
-	middleArgs = [ thunk, router ];
+  middleArgs = [ thunk, router ];
 }
 
 const enhancer = compose(applyMiddleware(...middleArgs));
 
 export function configureStore(initialState: {} = {}) {
-	return createStore(connectRouter(history)(rootReducer), initialState, enhancer);
+  return createStore(connectRouter(history)(rootReducer), initialState, enhancer);
 }

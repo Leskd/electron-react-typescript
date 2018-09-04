@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev-main": "cross-env NODE_ENV=development electron -r babel-register ./app/main/main",
-    "dev-renderer": "node scripts/start.js",
-    "start": "node scripts/start.js",
+    "start-renderer": "node scripts/start.js",
+    "start-main": "cross-env NODE_ENV=development electron -r babel-register ./app/main/main",
+    "start": "concurrently --kill-others \"npm run start-renderer\" \"npm run start-main\"",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom"
   },
@@ -68,6 +68,7 @@
     "@types/redux-logger": "^3.0.6",
     "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
+    "concurrently": "^4.0.1",
     "cross-env": "^5.2.0",
     "electron": "^2.0.8",
     "electron-devtools-installer": "^2.2.4",

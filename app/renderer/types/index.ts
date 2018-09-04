@@ -1,13 +1,13 @@
 import { RouterState } from 'connected-react-router';
 
 export interface RouterState {
-	router: RouterState;
+  router: RouterState;
 }
 
 export interface CounterState {
-	count: number;
+  count: number;
 }
 
 export interface StoreState {
-	counter: CounterState;
+  counter: CounterState;
 }

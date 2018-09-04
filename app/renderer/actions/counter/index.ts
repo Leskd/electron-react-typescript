@@ -3,21 +3,21 @@ import { INCREMENT, DECREMENT } from './action_type';
 export type counterActions = Increment | Decrement;
 
 interface Increment {
-	type: INCREMENT;
+  type: INCREMENT;
 }
 
 export function increment(): Increment {
-	return {
-		type: INCREMENT,
-	};
+  return {
+    type: INCREMENT,
+  };
 }
 
 interface Decrement {
-	type: DECREMENT;
+  type: DECREMENT;
 }
 
 export function decrement(): Decrement {
-	return {
-		type: DECREMENT
-	};
+  return {
+    type: DECREMENT
+  };
 }

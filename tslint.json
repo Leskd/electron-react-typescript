@@ -34,7 +34,7 @@
     ],
     "curly": true,
     "forin": true,
-    "indent": [true, "tabs", 2],
+    "indent": [true, "spaces", 2],
     "jsdoc-format": false,
     "label-position": true,
     "max-line-length": [
