@@ -1,28 +1,29 @@
 import { BrowserWindow } from 'electron';
 
 export default class MainWindow {
-	mainWindow = null;
-	constructor() {
-		this.createMainWindow();
-	}
+  mainWindow = null;
+  constructor() {
+    this.createMainWindow();
+  }
 
-	createMainWindow() {
-		this.mainWindow = new BrowserWindow({
-			height: 600,
-			width: 800,
-			show: false
-		});
-	}
+  createMainWindow() {
+    this.mainWindow = new BrowserWindow({
+      height: 600,
+      width: 800,
+      show: false
+    });
+  }
 
-	loadURL(url) {
-		this.mainWindow.loadURL(url);
-	}
+  loadURL(url) {
+    this.mainWindow.loadURL(url);
+    // this.mainWindow.webContents.openDevTools();
+  }
 
-	openDevTools() {
-		this.mainWindow.webContents.openDevTools();
-	}
+  openDevTools() {
+    this.mainWindow.webContents.openDevTools();
+  }
 
-	show() {
-		this.mainWindow.show();
-	}
+  show() {
+    this.mainWindow.show();
+  }
 }

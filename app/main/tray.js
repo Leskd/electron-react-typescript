@@ -10,15 +10,15 @@ const contextMenu = Menu.buildFromTemplate([
 export default class TrayCreator {
   trayInstance = null;
   constructor(iconPath) {
-    this.initTray(iconPath)
+    this.path = iconPath;
   }
 
-  initTray(iconPath) {
-    this.trayInstance = new Tray(iconPath);
+  initTray() {
+    this.trayInstance = new Tray(this.path);
     this.setContextMenu(contextMenu);
   }
 
   setContextMenu(menu) {
     this.trayInstance.setContextMenu(menu);
   }
-};
+}

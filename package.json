@@ -2,11 +2,15 @@
   "name": "electron-typescript-react",
   "version": "0.1.0",
   "private": true,
+  "main": "./main.js",
   "scripts": {
     "start-renderer": "node scripts/start.js",
     "start-main": "cross-env NODE_ENV=development electron -r babel-register ./app/main/main",
     "start": "concurrently --kill-others \"npm run start-renderer\" \"npm run start-main\"",
-    "build": "node scripts/build.js",
+    "build-renderer": "node scripts/build.js",
+    "build-main": "cross-env NODE_ENV=production webpack --config ./config/webpack.config.electron.js --color",
+    "build": "concurrently \"npm run build-main\" \"npm run build-renderer\"",
+    "releaseWin": "npm run build",
     "test": "node scripts/test.js --env=jsdom"
   },
   "dependencies": {
@@ -58,6 +62,7 @@
     "whatwg-fetch": "2.0.3"
   },
   "devDependencies": {
+    "@types/electron-devtools-installer": "^2.0.2",
     "@types/jest": "^23.3.1",
     "@types/node": "^10.9.3",
     "@types/react": "^16.4.13",
