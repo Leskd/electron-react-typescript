@@ -38,22 +38,11 @@ class Electron {
   }
 
   installExtensions = async () => {
-    // const { default: installer } = require('electron-devtools-installer');
-    // const forceDownload = !!process.env.UPGRADE_EXTENSIONS;
-    // const extensions = ['REACT_DEVELOPER_TOOLS', 'REDUX_DEVTOOLS'];
+    const { default: installer, REACT_DEVELOPER_TOOLS } = require('electron-devtools-installer');
 
-    // for (const name of extensions) {
-    //   try {
-    //     await installer.default(installer[name], forceDownload);
-    //   } catch (e) {}
-    // }
-    const installer = require('electron-devtools-installer');
-    const forceDownload = !!process.env.UPGRADE_EXTENSIONS;
-    const extensions = ['REACT_DEVELOPER_TOOLS', 'REDUX_DEVTOOLS'];
-
-    return Promise.all(
-        extensions.map(name => installer.default(installer[name], forceDownload))
-    ).catch(e => {});
+    installer([REACT_DEVELOPER_TOOLS])
+    .then((name) => console.log(`Added Extension:  ${name}`))
+    .catch((err) => console.log('An error occurred: ', err));
   }
 }
 
