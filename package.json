@@ -1,7 +1,23 @@
 {
   "name": "electron-typescript-react",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "./main.js",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/Leskd/electron-react-typescript.git"
+  },
+  "author": {
+    "name": "name",
+    "email": ""
+  },
+  "keywords": [
+    "electron",
+    "typescript",
+    "react",
+    "redux"
+  ],
+  "homepage": "http://github.com/Leskd/electron-react-typescript",
+  "license": "MIT",
   "scripts": {
     "start-renderer": "node scripts/start.js",
     "start-main": "cross-env NODE_ENV=development electron -r babel-register ./app/main/main",
@@ -15,6 +31,19 @@
     "release-all": "npm run release-win && npm run release-mac",
     "postinstall": "electron-builder install-app-deps",
     "test": "node scripts/test.js --env=jsdom"
+  },
+  "build": {
+    "productName": "Electron-TypeScript-React",
+    "artifactName": "${productName}_setup.${ext}",
+    "appId": "com.example.app",
+    "files": [
+      "build/",
+      "main.js",
+      "package.json"
+    ],
+    "mac": {
+      "identity": null
+    }
   },
   "dependencies": {
     "autoprefixer": "7.1.6",
@@ -83,27 +112,6 @@
     "electron-devtools-installer": "^2.2.4",
     "redux-logger": "^3.0.6",
     "typescript": "^3.0.3"
-  },
-  "build": {
-    "productName": "Electron-TypeScript-React",
-    "artifactName": "${productName}_setup.${ext}",
-    "appId": "com.example.app",
-    "files": [
-      "build/",
-      "main.js",
-      "package.json"
-    ],
-    "mac": {
-      "identity": null
-    }
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+http://github.com/Leskd/electron-react-typescript.git"
-  },
-  "author": {
-    "name": "name",
-    "email": ""
   },
   "jest": {
     "collectCoverageFrom": [
