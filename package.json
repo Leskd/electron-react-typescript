@@ -6,11 +6,15 @@
   "scripts": {
     "start-renderer": "node scripts/start.js",
     "start-main": "cross-env NODE_ENV=development electron -r babel-register ./app/main/main",
+    "start-main-a": "cross-env NODE_ENV=development webpack --config ./config/webpack.config.electron.js --color && electron ./main",
     "start": "concurrently --kill-others \"npm run start-renderer\" \"npm run start-main\"",
     "build-renderer": "node scripts/build.js",
     "build-main": "cross-env NODE_ENV=production webpack --config ./config/webpack.config.electron.js --color",
     "build": "concurrently \"npm run build-main\" \"npm run build-renderer\"",
-    "releaseWin": "npm run build",
+    "release-win": "npm run build && electron-builder --win --x64",
+    "release-mac": "npm run build && electron-builder --mac --x64",
+    "release-all": "npm run release-win && npm run release-mac",
+    "postinstall": "electron-builder install-app-deps",
     "test": "node scripts/test.js --env=jsdom"
   },
   "dependencies": {
@@ -76,9 +80,23 @@
     "concurrently": "^4.0.1",
     "cross-env": "^5.2.0",
     "electron": "^2.0.8",
+    "electron-builder": "^20.28.3",
     "electron-devtools-installer": "^2.2.4",
     "redux-logger": "^3.0.6",
     "typescript": "^3.0.3"
+  },
+  "build": {
+    "productName": "Electron-TypeScript-React",
+    "artifactName": "${productName}_setup.${ext}",
+    "appId": "com.example.app",
+    "files": [
+      "build/",
+      "main.js",
+      "package.json"
+    ],
+    "mac": {
+      "identity": null
+    }
   },
   "jest": {
     "collectCoverageFrom": [

@@ -1,6 +1,6 @@
-import { Menu } from 'electron';
+import { Menu, MenuItemConstructorOptions } from 'electron';
 
-const mainMenuTemplate  = [
+const mainMenuTemplate: MenuItemConstructorOptions[]  = [
   {
     label: 'Edit',
     submenu: [

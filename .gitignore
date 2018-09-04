@@ -9,6 +9,8 @@
 # production
 /build
 /package
+/dist
+/main.js
 
 # misc
 .DS_Store

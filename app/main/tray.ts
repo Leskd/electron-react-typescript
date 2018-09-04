@@ -8,8 +8,9 @@ const contextMenu = Menu.buildFromTemplate([
 ]);
 
 export default class TrayCreator {
-  trayInstance = null;
-  constructor(iconPath) {
+  trayInstance: Tray;
+  path: string;
+  constructor(iconPath: string) {
     this.path = iconPath;
   }
 
@@ -18,7 +19,7 @@ export default class TrayCreator {
     this.setContextMenu(contextMenu);
   }
 
-  setContextMenu(menu) {
+  setContextMenu(menu: Menu) {
     this.trayInstance.setContextMenu(menu);
   }
 }

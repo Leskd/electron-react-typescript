@@ -7,7 +7,7 @@ import TrayCreator from './tray';
 const isDev = process.env.NODE_ENV === 'development';
 
 class Electron {
-  mainWindowInstance = null;
+  mainWindowInstance: MainWindow;
 
   init() {
     this.initApp();
@@ -18,8 +18,8 @@ class Electron {
       this.createMainWindow();
       this.mainWindowInstance.loadURL('http://localhost:3000/');
       Menu.setApplicationMenu(mainMenu);
-      console.log(__dirname, process.env.NODE_ENV)
-      const appIconPath = path.join(__dirname, '../../assest/electron.png');
+      console.log(__dirname, isDev, process.env.NODE_ENV);
+      const appIconPath = path.join(__dirname, './assest/electron.png');
       const tray = new TrayCreator(appIconPath);
       tray.initTray();
       if (isDev) {
@@ -41,8 +41,8 @@ class Electron {
     const { default: installer, REACT_DEVELOPER_TOOLS } = require('electron-devtools-installer');
 
     installer([REACT_DEVELOPER_TOOLS])
-    .then((name) => console.log(`Added Extension:  ${name}`))
-    .catch((err) => console.log('An error occurred: ', err));
+    .then((name: string) => console.log(`Added Extension:  ${name}`))
+    .catch((err: Error) => console.log('An error occurred: ', err));
   }
 }
 

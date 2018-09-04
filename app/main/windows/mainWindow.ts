@@ -1,7 +1,7 @@
 import { BrowserWindow } from 'electron';
 
 export default class MainWindow {
-  mainWindow = null;
+  mainWindow: BrowserWindow;
   constructor() {
     this.createMainWindow();
   }
@@ -14,7 +14,7 @@ export default class MainWindow {
     });
   }
 
-  loadURL(url) {
+  loadURL(url: string) {
     this.mainWindow.loadURL(url);
     // this.mainWindow.webContents.openDevTools();
   }
