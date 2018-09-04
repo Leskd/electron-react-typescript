@@ -98,6 +98,14 @@
       "identity": null
     }
   },
+  "repository": {
+    "type": "git",
+    "url": "git+http://github.com/Leskd/electron-react-typescript.git"
+  },
+  "author": {
+    "name": "name",
+    "email": ""
+  },
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}"
