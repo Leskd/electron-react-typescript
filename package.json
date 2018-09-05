@@ -16,19 +16,22 @@
     "react",
     "redux"
   ],
+  "bugs": {
+    "url": "http://github.com/Leskd/electron-react-typescript/issues"
+  },
   "homepage": "http://github.com/Leskd/electron-react-typescript",
   "license": "MIT",
   "scripts": {
     "start-renderer": "node scripts/start.js",
-    "start-main": "cross-env NODE_ENV=development electron -r babel-register ./app/main/main",
-    "start-main-a": "cross-env NODE_ENV=development webpack --config ./config/webpack.config.electron.js --color && electron ./main",
+    "start-main": "cross-env NODE_ENV=development node --trace-warnings ./node_modules/webpack/bin/webpack --config ./config/webpack.config.electron.js --colors && electron ./main",
     "start": "concurrently --kill-others \"npm run start-renderer\" \"npm run start-main\"",
     "build-renderer": "node scripts/build.js",
-    "build-main": "cross-env NODE_ENV=production webpack --config ./config/webpack.config.electron.js --color",
+    "build-main": "cross-env NODE_ENV=production node --trace-warnings ./node_modules/webpack/bin/webpack --config ./config/webpack.config.electron.js --progress --profile --colors",
     "build": "concurrently \"npm run build-main\" \"npm run build-renderer\"",
+    "local": "electron ./main.js",
     "release-win": "npm run build && electron-builder --win --x64",
     "release-mac": "npm run build && electron-builder --mac --x64",
-    "release-all": "npm run release-win && npm run release-mac",
+    "release-all": "npm run build && electron-builder --win --x64 && electron-builder --mac --x64",
     "postinstall": "electron-builder install-app-deps",
     "test": "node scripts/test.js --env=jsdom"
   },
