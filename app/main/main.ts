@@ -1,10 +1,21 @@
 import { app, Menu } from 'electron';
 import path from 'path';
+import url from 'url';
 import MainWindow from './windows/mainWindow';
 import { mainMenu } from './menu';
 import TrayCreator from './tray';
 
 const isDev = process.env.NODE_ENV === 'development';
+const port = parseInt(process.env.PORT!, 10) || 3000;
+const devUrl = `http://localhost:${port}/`;
+
+// https://github.com/jarek-foksa/xel/issues/23
+const prodUrl = url.format({
+  pathname: path.resolve(__dirname, 'build/index.html'),
+  protocol: 'file:',
+  slashes: true
+});
+const indexUrl = isDev ? devUrl : prodUrl;
 
 class Electron {
   mainWindowInstance: MainWindow;
@@ -16,10 +27,9 @@ class Electron {
   initApp() {
     app.on('ready', async () => {
       this.createMainWindow();
-      this.mainWindowInstance.loadURL('http://localhost:3000/');
+      this.mainWindowInstance.loadURL(indexUrl);
       Menu.setApplicationMenu(mainMenu);
-      console.log(__dirname, isDev, process.env.NODE_ENV);
-      const appIconPath = path.join(__dirname, './assest/electron.png');
+      const appIconPath = path.join(__dirname, './assets/electron.png');
       const tray = new TrayCreator(appIconPath);
       tray.initTray();
       if (isDev) {
