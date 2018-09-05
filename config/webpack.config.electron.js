@@ -1,12 +1,13 @@
 
 const webpack = require('webpack');
+const path = require('path');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const paths = require('./paths');
 
 module.exports = {
   entry: paths.appEntryJs,
   output: {
-    path: paths.publicUrl,
+    path: path.resolve(__dirname, '../'),
     filename: 'main.js'
   },
   resolve: {
