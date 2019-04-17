@@ -33,7 +33,7 @@
     "release-mac": "npm run build && electron-builder --mac --x64",
     "release-all": "npm run build && electron-builder --win --x64 && electron-builder --mac --x64",
     "postinstall": "electron-builder install-app-deps",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom --watchAll"
   },
   "build": {
     "productName": "Electron-TypeScript-React",
@@ -97,6 +97,7 @@
     "whatwg-fetch": "2.0.3"
   },
   "devDependencies": {
+    "@types/electron": "^1.6.10",
     "@types/electron-devtools-installer": "^2.0.2",
     "@types/jest": "^23.3.1",
     "@types/node": "^10.9.3",
@@ -105,6 +106,7 @@
     "@types/react-redux": "^6.0.6",
     "@types/react-router": "^4.0.30",
     "@types/react-router-dom": "^4.3.0",
+    "@types/redux": "^3.6.0",
     "@types/redux-logger": "^3.0.6",
     "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
@@ -118,14 +120,14 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx,ts,tsx}"
+      "app/**/*.{js,jsx,ts,tsx}"
     ],
     "setupFiles": [
       "<rootDir>/config/polyfills.js"
     ],
     "testMatch": [
-      "<rootDir>/src/**/__tests__/**/*.(j|t)s?(x)",
-      "<rootDir>/src/**/?(*.)(spec|test).(j|t)s?(x)"
+      "<rootDir>/app/**/__tests__/**/*.(j|t)s?(x)",
+      "<rootDir>/app/**/?(*.)(spec|test).(j|t)s?(x)"
     ],
     "testEnvironment": "node",
     "testURL": "http://localhost",
@@ -156,7 +158,7 @@
     ],
     "globals": {
       "ts-jest": {
-        "tsConfigFile": "E:\\works\\git\\github\\Electron-TypeScript-React\\tsconfig.test.json"
+        "tsConfigFile": "tsconfig.test.json"
       }
     }
   },
