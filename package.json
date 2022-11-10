@@ -112,7 +112,7 @@
     "babel-register": "^6.26.0",
     "concurrently": "^4.0.1",
     "cross-env": "^5.2.0",
-    "electron": "^7.2.4",
+    "electron": "^18.3.7",
     "electron-builder": "^20.28.3",
     "electron-devtools-installer": "^2.2.4",
     "redux-logger": "^3.0.6",
